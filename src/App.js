@@ -2,6 +2,13 @@ import React, {useState} from 'react';
 import './App.css';
 
 function App() {
+    const [firstNumber, setFirstNumber] = useState(0);
+    const [secondNumber, setSecondNumber] = useState(0);
+    const [result, setResult] = useState(null);
+
+    const [number, setNumber] = useState(0);
+    const [operator, setOperator] = useState("")
+
     return (
         <div className="calc">
             <div className="display">
