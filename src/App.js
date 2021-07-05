@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
+  /* setting numbers in states */
   const [firstNumber, setFirstNumber] = useState(0);
   const [secondNumber, setSecondNumber] = useState(0);
+  /* setting result */
   const [result, setResult] = useState(null);
-
+  /* changing selected number to be saved in firstNumber or secondNumber */
   const [number, setNumber] = useState(1);
+  /* saving operator */
   const [operator, setOperator] = useState("");
 
   console.log(firstNumber);
@@ -18,6 +21,7 @@ function App() {
         <input
           type="number"
           value={
+            /* logic for displaying correct value */
             result !== null ? result : number === 1 ? firstNumber : secondNumber
           }
           disabled
@@ -28,6 +32,7 @@ function App() {
 
           <button
             onClick={() => {
+              /* logic for adding 0 if first or second number are set then we need to add 0 on end*/
               if (number === 1)
                 setFirstNumber(
                   firstNumber === 0 ? firstNumber : firstNumber * 10
@@ -42,6 +47,7 @@ function App() {
           </button>
 
           <button className="clear"
+            /* clearing states */
             onClick={() => {
               setResult(null)
               setFirstNumber(0)
@@ -55,6 +61,7 @@ function App() {
           <button
             className="equal"
             onClick={() => {
+              /* logic for calculation */
               if (operator === "+") {
                 setResult(firstNumber + secondNumber);
               } else if (operator === "-") {
@@ -67,8 +74,8 @@ function App() {
           >
             =
           </button>
-
           {new Array(9).fill(null).map((a, i) => {
+            /* displaying numbers of calculator */
             const n = i + 1;
 
             return (
@@ -86,6 +93,7 @@ function App() {
         <div className="actions">
           <button
             onClick={() => {
+              /* setting operator state and changing selected number to be saved in first or second */
               setOperator("/");
               setNumber(2);
             }}
